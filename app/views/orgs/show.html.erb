@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+
+<div id="org_details">
+
+
+<!-- affiliation information -->
+	<div class = "right">
+		<p class="red">
+		<%= link_to 'Go Back >>', orgs_path %>
+		</p>
+		<br/>
+
+		<b class="red"> Affiliated Practitioners </b>
+		<% @indivs.each do |indiv| %>
+				<p><%= link_to "#{indiv.first}" + " " + "#{indiv.last}", indiv_path(indiv) %> </p>
+		<% end %>
+	</div>
+	
+	
+	
+<!--  Org Info -->
+	<h2 class="title"> Organization Information </h2>
+	
+	<p>
+	<b class="red">Orginization Name:</b>
+	  <%= @org.orgname %>
+	</p>
+
+
+
+	<p>
+	  <b class="red">Address1:</b>
+	  <%= @org.address1 %>
+
+	  <b class="red">Address2:</b>
+	  <%= @org.address2 %>
+	</p>
+
+	<p>
+	  <b class="red">City:</b>
+	  <%= @org.city %>
+
+	  <b class="red">State:</b>
+	  <%= @org.state %>
+	</p>
+
+	<p>
+	  <b class="red">Zipcode:</b>
+	  <%= @org.zipcode %>
+	</p>
+
+	<p>
+	  <b class="red">Phone:</b>
+	  <%= @org.phone %>
+	</p>
+
+
+<!-- Ranking Info -->
+	<table id="buckets_table">
+		<tr>
+			<th>Hypo Rank </th>
+			<th>Ortho Rank</th>
+			<th>Liver Rank </th>
+			<th>Cancer Rank </th>
+			
+		</tr>
+		<tr>
+			<td> <%= @org.org_bucket_1_rank %> </td>
+			<td> <%= @org.org_bucket_2_rank %> </td>
+			<td> <%= @org.org_bucket_3_rank %> </td>
+			<td> <%= @org.org_bucket_4_rank %> </td>
+			
+		<tr>
+			
+			
+		</tr>
+			
+	</table>
+
+	
+
+</div>

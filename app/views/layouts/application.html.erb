@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>inatable </title>
+
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<%= csrf_meta_tag %>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="/css/ie6.css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen" /><![endif]-->
+<link rel="shortcut icon" href="images/favicon.ico" />
+<script type="text/javascript">
+
+/**
+ * The following variables may be adjusted
+ */
+var active_color = '#000'; // Colour of user provided text
+var inactive_color = '#444'; // Colour of default text
+
+/**
+ * No need to modify anything below this line
+ */
+
+$(document).ready(function() {
+  $("input.default-value").css("color", inactive_color);
+  var default_values = new Array();
+  $("input.default-value").focus(function() {
+    if (!default_values[this.id]) {
+      default_values[this.id] = this.value;
+    }
+    if (this.value == default_values[this.id]) {
+      this.value = '';
+      this.style.color = active_color;
+    }
+    $(this).blur(function() {
+      if (this.value == '') {
+        this.style.color = inactive_color;
+        this.value = default_values[this.id];
+      }
+    });
+  });
+});
+</script>
+</head>
+
+<body>
+
+
+<!-- Begin Container -->
+<div class="container_12">
+
+<!-- Begin Header -->
+	<div class="grid_12">
+		<div id="header">
+
+					
+
+			<ul class="nav">
+				<li> <%= link_to "Account Settings", edit_user_registration_path %> </li>
+				<li><%= link_to "Help", help_path %> </li>
+				<li><%= link_to "Contact", contact_path %> </li>
+			</ul>
+		
+				
+			<h1 id="branding">
+				<%= image_tag('inatable_logo.png') %> 
+			</h1>
+		
+					<div id="user_nav" style="font-size: 12px;">
+							<% if user_signed_in? %>  
+								Signed in as <%= current_user.email %>.  
+								<%= link_to "Sign out", destroy_user_session_path %>  
+						  <% else %>  
+							<p> </p>  
+					<% end %>  
+				</div>	
+		</div>
+				
+	</div>
+
+
+
+<!--begin main -->
+<div id="main">
+	
+	<!-- user nav -->
+
+		
+	<!-- main content -->
+	<div class="grid_8">
+		<div id="content">
+			<p class= "notice"> <%= notice %> </p>
+			<p class="alert"> <%= alert %>  </p>
+			<%= yield %>
+		</div>
+	</div>
+		
+	<!-- sidebar -->
+		<div class="grid_4">
+			<div id="sidebar">
+			
+				<%= render 'indivs/indiv_search' %>
+			
+			<!-- Begin Nav Links -->
+					
+					
+					<div class="square">
+						<%= image_tag('building.png')%>
+						<%= link_to "Organizations", orgs_path %>
+					</div>
+				
+					<div class="square">
+						<%= image_tag('user.png')%>
+						<%= link_to "Practitioners", indivs_path %>	
+					</div>
+				
+					<div class="square" >
+						<%= image_tag('map.png')%>
+						<%= link_to "Territories", territories_path %>  
+					</div>
+				 
+					<div class="square">
+							<%= image_tag('stats.png')%>
+							<%= link_to "Reports", reports_path %>
+						</div>	
+				
+			</div>
+		</div>
+	
+	
+
+	<!-- end sidebar -->
+
+<!-- end main -->
+</div>
+
+
+
+
+<div class="clear"></div>
+
+
+
+
+
+<!-- begin footer -->
+<div class="grid_12" id="site_info">
+	
+	
+<div class="box">
+	<p>Copyright 2011 implied labs </p>
+
+</div>
+</div>
+<div class="clear"></div>
+</div>
+
+</html>

@@ -1,0 +1,31 @@
+<table id="indivs_table">
+ 
+	<%= will_paginate @indivs %>
+	 <tr>
+    
+    <th> <%= sortable "first", "First"%></th>
+    <th><%= sortable "last", "Last" %></th>
+	<th><%= sortable  "bucket_1_rank", "Hypo Rank"%></th>
+    <th><%=sortable  "bucket_2_rank", "Liver Rank"%></th>
+    <th><%=sortable  "bucket_3_rank", "Ortho Rank"%></th>
+    <th><%=sortable  "bucket_4_rank", "Cancer Rank"%></th>
+ 
+  
+  </tr>
+
+<% @indivs.each do |indiv| %>
+  <tr class="<%= cycle('even','odd') %>">
+    <td><%=link_to "#{indiv.first}", indiv_path(indiv) %></td>
+    <td><%= link_to "#{indiv.last}", indiv_path(indiv) %></td>
+    <td><%= indiv.bucket_1_rank %></td>
+    <td><%= indiv.bucket_2_rank %></td>
+    <td><%= indiv.bucket_3_rank %></td>
+    <td><%= indiv.bucket_4_rank %></td>
+   
+   
+
+  </tr>
+<% end %>
+</table>
+
+
