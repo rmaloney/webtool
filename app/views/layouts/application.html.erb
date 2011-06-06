@@ -12,11 +12,10 @@
 <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/css/ie6.css" media="screen" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen" /><![endif]-->
 <link rel="shortcut icon" href="images/favicon.ico" />
+
 <script type="text/javascript">
 
-/**
- * The following variables may be adjusted
- */
+
 var active_color = '#000'; // Colour of user provided text
 var inactive_color = '#444'; // Colour of default text
 
@@ -102,7 +101,14 @@ $(document).ready(function() {
 		<div class="grid_4">
 			<div id="sidebar">
 			
-				<%= render 'indivs/indiv_search' %>
+				<% form_tag indivs_path, :method => 'get', :id => "indivs_search" do %>
+						<%= hidden_field_tag :direction, params[:direction] %>  
+						<%= hidden_field_tag :sort, params[:sort] %>
+						<p>
+							<%= text_field_tag :search, params[:search], :id => "search_bar", :class => "default-value", :value => "Search for a keyword, city, state or zip" %>
+							<input type = "submit" value="Search Practitioners" class="button_red">
+						</p>
+				<% end %>
 			
 			<!-- Begin Nav Links -->
 					
