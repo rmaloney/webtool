@@ -5,7 +5,7 @@ class OrgsController < AuthorizedController
   layout 'orgs'
   
   helper_method :sort_column, :sort_direction
-  caches_action :index
+ # caches_action :index
   
   autocomplete :org, :orgname
   

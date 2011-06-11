@@ -5,10 +5,7 @@
 <title>inatable </title>
 
 <%= stylesheet_link_tag :all %>
-
-
-
-<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.js' %>
+ <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.js' %>
 
 <%= csrf_meta_tag %>
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
@@ -92,11 +89,9 @@ $(document).ready(function() {
 			</h1>
 		
 			<ul class="nav">
-				<li><%= link_to "Organizations", orgs_path %></li>
-				<li><%= link_to "Practitioners", indivs_path %></li>
-				<li><%= link_to "Territories", territories_path %></li>
 				<li> <%= link_to "Account Settings", edit_user_registration_path %> </li>
-				
+				<li><%= link_to "Help", help_path %> </li>
+				<li><%= link_to "Contact", contact_path %> </li>
 			</ul>
 			
 						
@@ -113,7 +108,7 @@ $(document).ready(function() {
 
 		
 	<!-- main content -->
-	<div class="grid_10">
+	<div class="grid_8">
 		<div id="content">
 			<p class= "notice"> <%= notice %> </p>
 			<p class="alert"> <%= alert %>  </p>
@@ -121,10 +116,39 @@ $(document).ready(function() {
 		</div>
 	</div>
 		
-
+	<!-- sidebar -->
+		<div class="grid_4">
+			<div id="sidebar">
+			
+			<!-- Begin Nav Links -->
+					
+					
+					<div class="square">
+						<%= image_tag('building.png')%>
+						<%= link_to "Organizations", orgs_path %>
+					</div>
+				
+					<div class="square">
+						<%= image_tag('user.png')%>
+						<%= link_to "Practitioners", indivs_path %>	
+					</div>
+				
+					<div class="square" >
+						<%= image_tag('map.png')%>
+						<%= link_to "Territories", territories_path %>  
+					</div>
+				 
+					<div class="square">
+							<%= image_tag('stats.png')%>
+							<%= link_to "Reports", reports_path %>
+						</div>	
+				
+			</div>
+		</div>
+	
 	
 
-	
+	<!-- end sidebar -->
 
 <!-- end main -->
 </div>

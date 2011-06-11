@@ -179,7 +179,12 @@ height: 400px;
 #search_bar{
 font-size: 1em;
 width: 95%;
+border: 1px solid #444000;
+padding: 3px;
 }
+
+#indivs_search{ width: 30%; }
+#orgs_search { width: 30%;}
 
 #keyword_search{
 margin-top: 15px;	

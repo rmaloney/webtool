@@ -2,7 +2,7 @@ class IndivsController < AuthorizedController
   # GET /indivs
   # GET /indivs.xml
   helper_method :sort_column, :sort_direction
-  caches_action :index
+ # caches_action :index
   
   
   
